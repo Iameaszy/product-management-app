@@ -7,7 +7,7 @@ import { SmsAdapter } from './sms';
 
 @Module({
     imports: [HttpModule, CacheModule.register()],
-    providers: [SmsAdapter, EmailAdapter, CloudinaryAdapter, FirebaseAdapter],
+    providers: [SmsAdapter, EmailAdapter, CloudinaryAdapter, FirebaseAdapter, GeocodingAdapter],
     exports: [SmsAdapter, EmailAdapter, CloudinaryAdapter, FirebaseAdapter, GeocodingAdapter],
 })
 export class AdaptersModule { }

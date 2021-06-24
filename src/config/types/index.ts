@@ -3,7 +3,6 @@ export type EnvTypes = {
     emailApikey: string;
     smsApikey: string;
     port: number;
-    secret: string;
     environment: string,
     appUrl: string;
     appEmail: string;
@@ -17,5 +16,7 @@ export type EnvTypes = {
     cloudinaryCloudName: string;
     dbUrl: string;
     secretKey: string;
-    geocodingApiKey: string
+    geocodingApiKey: string;
+    nodemailerUsername: string;
+    nodemailerPassword: string;
 };

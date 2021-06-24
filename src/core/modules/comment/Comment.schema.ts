@@ -4,7 +4,7 @@ import ObjectId from 'src/core/common/types/ObjectId';
 import { Product } from '../product/Product.schema';
 import { User } from '../user/User.schema';
 
-export type CommentDocument = typeof Comment & Document;
+export type CommentDocument = Comment & Document;
 
 
 @Schema({ timestamps: true })
@@ -16,10 +16,10 @@ export class Comment {
     commentBy: User
 
     @Prop({ type: ObjectId, ref: 'Product' })
-    product: Product
+    product: Product | string
 
     @Prop({ type: ObjectId, ref: 'Comment', required: false })
-    parentCommentId: Comment
+    parentCommentId?: Comment | string
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);

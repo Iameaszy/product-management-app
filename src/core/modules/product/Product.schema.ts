@@ -1,9 +1,9 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Document } from 'mongoose';
 import ObjectId from 'src/core/common/types/ObjectId';
 import { User } from '../user/User.schema';
 
-export type ProductDocument = typeof Product & Document;
+export type ProductDocument = Product & Document;
 
 
 @Schema({ timestamps: true })
@@ -33,3 +33,4 @@ export class Product {
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
+ProductSchema.index({ location: "2dsphere" })
