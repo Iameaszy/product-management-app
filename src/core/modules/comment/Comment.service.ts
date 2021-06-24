@@ -1,0 +1,14 @@
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Comment, CommentDocument } from './Comment.schema';
+
+@Injectable()
+export class CommentService {
+  constructor(@InjectModel(Comment.name) private CommentModel: Model<CommentDocument>) { }
+
+
+  getHello(): string {
+    return 'Hello World!';
+  }
+}
