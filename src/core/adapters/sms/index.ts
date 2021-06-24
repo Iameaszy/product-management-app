@@ -14,7 +14,6 @@ export class SmsAdapter {
     public async sendSms({ to, body }: { to: string, body: string }): Promise<any> {
         const smsApiUrl = 'https://termii.com/api/sms/send';
         const smsApiKey = this.config.get('smsApikey');
-
         const data: SmsRequestParams = {
             to,
             from: 'Tradeport',
