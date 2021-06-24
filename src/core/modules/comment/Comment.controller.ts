@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Request, UseGuards } from '@nestjs/common';
 import { Request as ExpressRequest } from 'express';
 import { JwtAuthGuard } from '../auth/gaurds/Jwt.guard';
 import { UserDocument } from '../user/User.schema';
@@ -17,4 +17,9 @@ export class CommentController {
     return this.commentService.create({ ...createCommentDto, commentBy: (req.user as UserDocument).id });
   }
 
+  @Get()
+  @UseGuards(JwtAuthGuard)
+  private getComments(@Query("productId") productId: string): Promise<Comment[]> {
+    return this.commentService.getProductComments(productId)
+  }
 }

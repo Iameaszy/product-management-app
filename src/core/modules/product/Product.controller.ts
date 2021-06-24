@@ -3,6 +3,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Request as ExpressRequest } from 'express';
 import multer from 'multer'
 import { JwtAuthGuard } from '../auth/gaurds/Jwt.guard';
+import { CommentService } from '../comment/Comment.service';
 import { User } from '../user/User.schema';
 import { CreateProductDto } from './dtos/CreateProduct.dto';
 import { Product } from './Product.schema';
@@ -11,7 +12,9 @@ import { ProductService } from './Product.service';
 
 @Controller("product")
 export class ProductController {
-  constructor(private readonly productService: ProductService) { }
+  constructor(private productService: ProductService,
+    private commentService: CommentService,
+  ) { }
 
   @Get(":productId")
   @UseGuards(JwtAuthGuard)
