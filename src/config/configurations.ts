@@ -8,7 +8,6 @@ export default (): EnvTypes => {
         dbUrl:
             process.env.DB_URL ||
             'postgresql://gofapay:(gofapay2020)@localhost:5432/gofapay',
-        secret: process.env.SECRET || 'secret',
         environment,
         emailApikey: process.env.EMAIL_API_KEY || '',
         smsApikey: process.env.SMS_API_KEY || '',
@@ -24,5 +23,7 @@ export default (): EnvTypes => {
         cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME || 'gofapay',
         secretKey: process.env.SECRET_KEY || "",
         geocodingApiKey: process.env.GEOCODING_API_KEY || "",
+        nodemailerPassword: process.env.NODEMAILER_PASSWORD || "",
+        nodemailerUsername: process.env.NODEMAILER_USERNAME || "",
     };
 };

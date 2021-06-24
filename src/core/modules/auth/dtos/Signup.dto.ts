@@ -1,4 +1,4 @@
-import { IsEmail, IsString, IsNotEmpty, IsObject, IsNotEmptyObject } from 'class-validator'
+import { IsEmail, IsString, IsNotEmpty, IsObject, IsNotEmptyObject, IsPhoneNumber } from 'class-validator'
 import { Address } from 'src/core/adapters/geocoding/types';
 
 export class SignupDto {
@@ -12,6 +12,10 @@ export class SignupDto {
     @IsString()
     @IsNotEmpty()
     firstName: string;
+
+    @IsString()
+    @IsPhoneNumber()
+    phoneNumber: string;
 
     @IsString()
     @IsNotEmpty()

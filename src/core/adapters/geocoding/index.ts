@@ -12,15 +12,16 @@ export class GeocodingAdapter {
     constructor(
         private config: ConfigService<EnvTypes>,
     ) {
+        const apiKey = this.config.get("geocodingApiKey");
         this.geocoder = nodeGeocoder({
             provider: "google",
-            apiKey: config.get("geocodingApiKey"),
+            apiKey,
             formatter: null,
         });
     }
 
-    public async geocode(address: Address) {
-        const loc = await this.geocoder.geocode(address)
+    public async geocode({ streetAddress, ...rest }: Address) {
+        const loc = await this.geocoder.geocode({ ...rest, address: streetAddress })
         return loc?.[0] || null
     }
 }

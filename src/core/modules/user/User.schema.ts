@@ -23,6 +23,10 @@ export class User {
     @Prop()
     refreshToken?: string;
 
+    @Prop({ required: true })
+    phoneNumber?: string;
+
+
     @Prop(raw(Address))
     address?: Address;
 

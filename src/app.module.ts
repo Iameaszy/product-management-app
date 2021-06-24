@@ -4,6 +4,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configurations';
 import { EnvTypes } from './config/types';
 import { ProductModule } from './core/modules/product/product.module';
+import { AuthModule } from './core/modules/auth/Auth.module';
+import { CommentModule } from './core/modules/comment/Comment.module';
+import { UserModule } from './core/modules/user/User.module';
 
 
 @Module({
@@ -22,6 +25,9 @@ import { ProductModule } from './core/modules/product/product.module';
       })
     }),
     ProductModule,
+    AuthModule,
+    CommentModule,
+    UserModule
   ],
   controllers: [],
   providers: [],

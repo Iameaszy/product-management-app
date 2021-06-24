@@ -1,12 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { UploadApiResponse, UploadStream, UploadApiErrorResponse } from 'cloudinary';
-import cloudinary from './configs';
+import { ConfigService } from '@nestjs/config';
+import { UploadApiResponse, UploadStream, UploadApiErrorResponse, v2 as cloudinary } from 'cloudinary';
+import { EnvTypes } from 'src/config/types';
 import { ReadStream } from './types';
-
 
 
 @Injectable()
 export class CloudinaryAdapter {
+    constructor(
+        private configService: ConfigService<EnvTypes>
+    ) {
+        cloudinary.config({
+            api_key: this.configService.get("cloudinaryApiKey"),
+            api_secret: this.configService.get("cloudinaryApiSecret"),
+            cloud_name: this.configService.get("cloudinaryCloudName"),
+        });
+    }
 
     public async uploadFile(filepath: string) {
         return cloudinary.uploader.upload(filepath);

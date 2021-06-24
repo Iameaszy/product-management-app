@@ -1,0 +1,1 @@
+export type PopulateOptions = { path: string, select: string }
