@@ -7,6 +7,8 @@ import { ProductModule } from './core/modules/product/product.module';
 import { AuthModule } from './core/modules/auth/Auth.module';
 import { CommentModule } from './core/modules/comment/Comment.module';
 import { UserModule } from './core/modules/user/User.module';
+import { AppService } from './core/modules/app/App.service';
+import { AppController } from './core/modules/app/App.controller';
 
 
 @Module({
@@ -27,9 +29,9 @@ import { UserModule } from './core/modules/user/User.module';
     ProductModule,
     AuthModule,
     CommentModule,
-    UserModule
+    UserModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }
